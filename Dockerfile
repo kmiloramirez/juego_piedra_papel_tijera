@@ -1,7 +1,10 @@
 FROM openjdk:17.0.2
 
+COPY aplicacion/build/libs/aplicacion.jar app.jar
+
+EXPOSE 8082
+
+ENTRYPOINT [ "java", "-jar", "app.jar" ]
 
 
-COPY application/build/libs/*.jar app.jar
 
-ENTRYPOINT [ "/bin/bash", "-c", "source <(cat /vault/secrets/*) && java -javaagent:/opt/javaagent.jar $JAVA_OPTS -jar /app.jar" ]
