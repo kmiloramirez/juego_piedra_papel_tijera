@@ -2,8 +2,8 @@ spring:
   application:
     name: juego_piedra_papel_tijera
   datasource:
-    url: "jdbc:postgresql://localhost:5432/postgres"
-    username: "root"
+    url: "jdbc:postgresql://postgres14:5432/postgres"
+    username: "postgres"
     password: "toor"
     driver-class-name: "org.postgresql.Driver"
   jpa:

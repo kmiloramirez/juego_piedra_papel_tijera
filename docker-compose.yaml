@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  postgres14:
+    image: postgres:14-alpine
+    ports:
+      - "5532:5432"
+    environment:
+      POSTGRES_PASSWORD: toor
+      POSTGRES_DB: postgres
+    volumes:
+      - data-postgres:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - piedraPapelTijera
+  piedra_papel_tijera:
+    image: piedra_papel_tijera:latest
+    ports:
+      - "8082:8081"
+    networks:
+      - piedraPapelTijera
+    depends_on:
+      - postgres14
+    restart: always
+volumes:
+  data-mysql:
+  data-postgres:
+
+networks:
+  piedraPapelTijera:
