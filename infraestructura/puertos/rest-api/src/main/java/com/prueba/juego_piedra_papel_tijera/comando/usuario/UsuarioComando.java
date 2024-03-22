@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController("usuarioV1")
-@RequestMapping(value = "v1/usuario")
+@RequestMapping(value = "v1/usuario/")
 public class UsuarioComando {
 
     private CrearUsuarioCasoDeUso crearUsuarioCasoDeUso;
