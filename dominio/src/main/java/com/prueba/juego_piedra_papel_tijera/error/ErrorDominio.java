@@ -3,9 +3,10 @@ package com.prueba.juego_piedra_papel_tijera.error;
 
 import java.util.logging.Logger;
 
-public abstract  class ErrorDominio extends RuntimeException {
+public abstract class ErrorDominio extends RuntimeException {
     private static final Logger LOG = Logger.getLogger(ErrorDominio.class.getName());
-    private static final String MENSAJE_ERROR = "ErrorDominio{mensaje='%s', codigoError=%d, tipoError='%s'}";
+    private static final String MENSAJE_ERROR =
+            "ErrorDominio{mensaje='%s', codigoError=%d, tipoError='%s'}";
 
     private static final long serialVersionUID = 1L;
     private final String mensaje;
@@ -24,7 +25,7 @@ public abstract  class ErrorDominio extends RuntimeException {
     }
 
     public void log() {
-        LOG.severe( () -> String.format(MENSAJE_ERROR, mensaje, codigoError, tipoError));
+        LOG.severe(() -> String.format(MENSAJE_ERROR, mensaje, codigoError, tipoError));
     }
 
     public String getTipoError() {

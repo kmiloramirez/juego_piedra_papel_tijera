@@ -2,10 +2,8 @@ package com.prueba.juego_piedra_papel_tijera.mapeador;
 
 import com.prueba.juego_piedra_papel_tijera.entidad.JuegoEntidad;
 import com.prueba.juego_piedra_papel_tijera.entidad.TurnoEntidad;
-import com.prueba.juego_piedra_papel_tijera.entidad.juego.Juego;
 import com.prueba.juego_piedra_papel_tijera.entidad.juego.JuegoCrear;
 import com.prueba.juego_piedra_papel_tijera.entidad.juego.Turno;
-import com.prueba.juego_piedra_papel_tijera.entidad.usuario.Usuario;
 
 import java.util.ArrayList;
 

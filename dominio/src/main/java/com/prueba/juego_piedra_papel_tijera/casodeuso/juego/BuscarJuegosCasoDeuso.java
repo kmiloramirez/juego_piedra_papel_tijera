@@ -15,7 +15,7 @@ public class BuscarJuegosCasoDeuso {
         this.juegoRepositorio = juegoRepositorio;
     }
 
-    public List<Juego> ejecutar(){
+    public List<Juego> ejecutar() {
         return juegoRepositorio.buscarTodosLosJuegos();
     }
 

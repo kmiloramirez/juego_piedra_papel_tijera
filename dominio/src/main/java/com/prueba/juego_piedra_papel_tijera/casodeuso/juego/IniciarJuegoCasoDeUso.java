@@ -6,8 +6,8 @@ import com.prueba.juego_piedra_papel_tijera.casodeuso.CasoDeUsoBase;
 import com.prueba.juego_piedra_papel_tijera.entidad.juego.Juego;
 import com.prueba.juego_piedra_papel_tijera.entidad.juego.JuegoIniciar;
 import com.prueba.juego_piedra_papel_tijera.regla.Regla;
-import com.prueba.juego_piedra_papel_tijera.regla.juego.ValidarJuegoExistente;
 import com.prueba.juego_piedra_papel_tijera.regla.juego.ValidarIniciarJuegoJugadores;
+import com.prueba.juego_piedra_papel_tijera.regla.juego.ValidarJuegoExistente;
 import com.prueba.juego_piedra_papel_tijera.regla.juego.ValidarJuegoIniciado;
 
 import java.util.ArrayList;
@@ -42,7 +42,8 @@ public class IniciarJuegoCasoDeUso implements CasoDeUsoBase<JuegoIniciar, Juego>
     }
 
     private void existeJuego(JuegoIniciar juegoIniciar) {
-        validacionesExistencia.forEach(validacion -> validacion.validar(juegoIniciar.numeroJuego()));
+        validacionesExistencia.forEach(
+                validacion -> validacion.validar(juegoIniciar.numeroJuego()));
     }
 
     private void validarIniciarJuego(JuegoIniciar juego) {

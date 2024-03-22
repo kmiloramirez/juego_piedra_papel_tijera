@@ -22,7 +22,7 @@ public class TurnoEntidad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SECUENCIA_TURNO")
-    private Long Id;
+    private Long id;
     @Enumerated(EnumType.STRING)
     EleccionesDeJuego manoJugador1;
     @Enumerated(EnumType.STRING)

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @CasoDeUso
-public class CrearUsuarioCasoDeUso implements CasoDeUsoBase<UsuarioCrear,Usuario> {
+public class CrearUsuarioCasoDeUso implements CasoDeUsoBase<UsuarioCrear, Usuario> {
 
 
     private UsuarioRepositorio usuarioRepositorio;
@@ -23,7 +23,7 @@ public class CrearUsuarioCasoDeUso implements CasoDeUsoBase<UsuarioCrear,Usuario
     public CrearUsuarioCasoDeUso(UsuarioRepositorio usuarioRepositorio,
                                  NombreUsuarioRegla nombreUsuarioRegla,
                                  UsuarioExistenteRegla usuarioExistenteRegla
-                                 ) {
+                                ) {
         this.usuarioRepositorio = usuarioRepositorio;
         this.validaciones = new ArrayList<>();
         this.validaciones.add(nombreUsuarioRegla);
@@ -31,15 +31,15 @@ public class CrearUsuarioCasoDeUso implements CasoDeUsoBase<UsuarioCrear,Usuario
     }
 
     @Override
-    public Usuario ejecutar(UsuarioCrear usuarioCrear){
+    public Usuario ejecutar(UsuarioCrear usuarioCrear) {
         validarUsuario(usuarioCrear);
         return usuarioRepositorio.guardarUsuario(usuarioCrear);
     }
 
-    private void  validarUsuario(UsuarioCrear usuarioCrear){
+    private void validarUsuario(UsuarioCrear usuarioCrear) {
         validaciones.forEach(validacion ->
-            validacion.validar(usuarioCrear)
-        );
+                                     validacion.validar(usuarioCrear)
+                            );
 
     }
 }

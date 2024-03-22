@@ -16,4 +16,5 @@ import org.springframework.context.annotation.FilterType;
 )
 
 @Configuration
-public class ReglaDeNegocioConfiguration {}
+public class ReglaDeNegocioConfiguration {
+}

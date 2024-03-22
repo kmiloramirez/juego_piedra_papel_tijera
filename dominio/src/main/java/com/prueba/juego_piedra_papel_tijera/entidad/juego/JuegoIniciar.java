@@ -9,7 +9,8 @@ public record JuegoIniciar(
         ModalidadJuego modalidadJuego
 ) {
 
-    public JuegoIniciar agregarModoDeJuego(ModalidadJuego modalidadJuego){
-        return new JuegoIniciar(this.numeroJuego(),this.identificacionJugador1(),this.identificacionJugador2(),modalidadJuego);
+    public JuegoIniciar agregarModoDeJuego(ModalidadJuego modalidadJuego) {
+        return new JuegoIniciar(this.numeroJuego(), this.identificacionJugador1(),
+                                this.identificacionJugador2(), modalidadJuego);
     }
 }

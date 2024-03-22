@@ -26,7 +26,8 @@ public class UsuarioExistenteRegla implements Regla<UsuarioCrear> {
         String nombreUsuario = usuarioCrear.nombre();
         Optional<Usuario> usuarioBuscado = usuarioRepositorio.buscarUsuarioPorNombre(nombreUsuario);
         if (usuarioBuscado.isPresent()) {
-            error = new UsuarioError("Usuario ya registrado con el id: " + usuarioBuscado.get().identificacion());
+            error = new UsuarioError(
+                    "Usuario ya registrado con el id: " + usuarioBuscado.get().identificacion());
             error.log();
             throw error;
         }

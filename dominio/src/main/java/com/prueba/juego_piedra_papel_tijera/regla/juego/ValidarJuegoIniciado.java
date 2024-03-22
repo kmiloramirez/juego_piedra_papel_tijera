@@ -19,8 +19,9 @@ public class ValidarJuegoIniciado implements Regla<JuegoIniciar> {
     public void validar(JuegoIniciar juegoIniciar) {
         UsuarioError error;
         Juego juego = juegoRepositorio.buscarJuegoPorNumero(juegoIniciar.numeroJuego()).get();
-        if(!juego.turnos().isEmpty()){
-            error = new UsuarioError("EL juego con el numero: "  + juegoIniciar.numeroJuego() + " ya fue iniciado");
+        if (!juego.turnos().isEmpty()) {
+            error = new UsuarioError(
+                    "EL juego con el numero: " + juegoIniciar.numeroJuego() + " ya fue iniciado");
             error.log();
             throw error;
         }

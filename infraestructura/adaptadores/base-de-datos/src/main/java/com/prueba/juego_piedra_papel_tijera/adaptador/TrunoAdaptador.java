@@ -11,7 +11,7 @@ import com.prueba.juego_piedra_papel_tijera.repositorio.TurnoRepositorioJpa;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class TrunoAdaptador implements TurnoRepositorio{
+public class TrunoAdaptador implements TurnoRepositorio {
 
     private JuegoRepositorioJpa juegoRepositorioJpa;
     private TurnoRepositorioJpa turnoRepositorioJpa;
@@ -25,10 +25,19 @@ public class TrunoAdaptador implements TurnoRepositorio{
     @Override
     public Turno guardarTurno(Turno turno, Integer numeroJuego) {
         JuegoEntidad juegoEntidad = juegoRepositorioJpa.findById(numeroJuego.longValue()).get();
-        TurnoEntidad turnoEntidad = turnoRepositorioJpa.findByJuegoAndTurnoNumero(juegoEntidad, turno.turnoNumero());
+        TurnoEntidad turnoEntidad =
+                turnoRepositorioJpa.findByJuegoAndTurnoNumero(juegoEntidad, turno.turnoNumero());
         turnoEntidad.setManoJugador1(turno.manoJugador1());
         turnoEntidad.setManoJugador2(turno.manoJugador2());
         turnoEntidad.setGanador(turno.ganador());
         return TurnoMapeadorBaseDeDatos.convertirAModelo(turnoRepositorioJpa.save(turnoEntidad));
+    }
+
+    @Override
+    public void borrarTurno(Turno turno, Integer numeroJuego) {
+        JuegoEntidad juegoEntidad = juegoRepositorioJpa.findById(numeroJuego.longValue()).get();
+        TurnoEntidad turnoEntidad =
+                turnoRepositorioJpa.findByJuegoAndTurnoNumero(juegoEntidad, turno.turnoNumero());
+        turnoRepositorioJpa.delete(turnoEntidad);
     }
 }

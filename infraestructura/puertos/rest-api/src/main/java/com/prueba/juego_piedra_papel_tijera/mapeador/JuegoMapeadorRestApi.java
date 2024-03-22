@@ -7,15 +7,11 @@ import com.prueba.juego_piedra_papel_tijera.entidad.juego.Juego;
 import com.prueba.juego_piedra_papel_tijera.entidad.juego.JuegoCrear;
 import com.prueba.juego_piedra_papel_tijera.entidad.juego.JuegoIniciar;
 import com.prueba.juego_piedra_papel_tijera.entidad.juego.TurnoEleccionMano;
-import com.prueba.juego_piedra_papel_tijera.entidad.usuario.Usuario;
-import com.prueba.juego_piedra_papel_tijera.entidad.usuario.UsuarioCrear;
 import com.prueba.juego_piedra_papel_tijera.request.JuegoCrearRequest;
 import com.prueba.juego_piedra_papel_tijera.request.JuegoIniciarRequest;
 import com.prueba.juego_piedra_papel_tijera.request.TurnoEleccionManoRequest;
-import com.prueba.juego_piedra_papel_tijera.request.UsuarioCreacionRequest;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class JuegoMapeadorRestApi {
@@ -30,10 +26,9 @@ public class JuegoMapeadorRestApi {
         UsuarioDto jugador1 = UsuarioMapeadorRestApi.convertirADto(juego.jugador1());
         UsuarioDto jugador2 = UsuarioMapeadorRestApi.convertirADto(juego.jugador2());
         List<TurnoDto> turnos =
-                juego.turnos().stream().map(TurnoMapeadorRestApi::convertirADto).collect(
-                        Collectors.toList());
+                juego.turnos().stream().map(TurnoMapeadorRestApi::convertirADto).toList();
         return new JuegoDto(juego.numeroJuego(), jugador1, jugador2, juego.modalidadJuego(),
-                            turnos,juego.ganador());
+                            turnos, juego.ganador());
     }
 
     public static JuegoCrear convertirCreacionRequestAModelo(JuegoCrearRequest juego) {
@@ -49,7 +44,7 @@ public class JuegoMapeadorRestApi {
     public static TurnoEleccionMano convertirEleccionRequestAModelo(Integer numeroJuego,
                                                                     Integer identificacionJugador,
                                                                     TurnoEleccionManoRequest juego) {
-        return new TurnoEleccionMano(numeroJuego,identificacionJugador,juego.eleccionesDeJuego());
+        return new TurnoEleccionMano(numeroJuego, identificacionJugador, juego.eleccionesDeJuego());
     }
 
 }

@@ -51,7 +51,6 @@ configure(project.subprojects.filter { it != project(":dominio") }) {
 
         implementation("org.springframework.boot:spring-boot-starter-web")
 
-
     }
 }
 

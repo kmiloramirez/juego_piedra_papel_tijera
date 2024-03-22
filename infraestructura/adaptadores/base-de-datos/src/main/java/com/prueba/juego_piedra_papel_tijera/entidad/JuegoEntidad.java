@@ -5,7 +5,6 @@ import com.prueba.juego_piedra_papel_tijera.entidad.enums.ModalidadJuego;
 
 import java.util.List;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

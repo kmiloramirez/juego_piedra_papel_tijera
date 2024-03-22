@@ -1,11 +1,10 @@
 package com.prueba.juego_piedra_papel_tijera.config;
 
+import com.prueba.juego_piedra_papel_tijera.anotacion.CasoDeUso;
+
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
-
-
-import com.prueba.juego_piedra_papel_tijera.anotacion.CasoDeUso;
 
 @ComponentScan(
         basePackages = "com.prueba.juego_piedra_papel_tijera.casodeuso",
@@ -16,4 +15,5 @@ import com.prueba.juego_piedra_papel_tijera.anotacion.CasoDeUso;
 )
 
 @Configuration
-public class CasoDeUsoConfiguration {}
+public class CasoDeUsoConfiguration {
+}

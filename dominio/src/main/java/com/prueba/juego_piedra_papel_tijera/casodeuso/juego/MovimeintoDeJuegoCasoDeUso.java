@@ -22,6 +22,8 @@ import java.util.Random;
 
 @CasoDeUso
 public class MovimeintoDeJuegoCasoDeUso implements CasoDeUsoBase<TurnoEleccionMano, Juego> {
+
+    private static final Random RANDOM = new Random();
     private List<Regla<Integer>> validacionesExistencia;
     private JuegoRepositorio juegoRepositorio;
     private TurnoRepositorio turnoRepositorio;
@@ -45,9 +47,9 @@ public class MovimeintoDeJuegoCasoDeUso implements CasoDeUsoBase<TurnoEleccionMa
         validarJuegoTerminado.validar(juego);
         Turno turno = obtenerTurnoActual(juego);
         turno = definirEleccionDeMado(turnoEleccionMano, juego, turno).validarGanador();
-        turnoRepositorio.guardarTurno(turno,juego.numeroJuego());
+        turnoRepositorio.guardarTurno(turno, juego.numeroJuego());
         juego = cargarJuego(turnoEleccionMano).validarGanador();
-        return validarCrearnuevoTurno(juego,turno);
+        return validarCrearnuevoTurno(juego, turno);
     }
 
     private Juego cargarJuego(TurnoEleccionMano turnoEleccionMano) {
@@ -60,13 +62,15 @@ public class MovimeintoDeJuegoCasoDeUso implements CasoDeUsoBase<TurnoEleccionMa
                     .orElseThrow();
     }
 
-    private Turno definirEleccionDeMado(TurnoEleccionMano turnoEleccionMano, Juego juego,Turno turno) {
+    private Turno definirEleccionDeMado(TurnoEleccionMano turnoEleccionMano, Juego juego,
+                                        Turno turno) {
         Usuario jugador1 = juego.jugador1();
         if (ModalidadJuego.UN_JUGADOR == juego.modalidadJuego()) {
             if (!jugador1.identificacion().equals(turnoEleccionMano.identificacionJugador())) {
                 errorJugador(turnoEleccionMano.identificacionJugador());
             }
-            return turno.elegirManoJugador1(turnoEleccionMano.eleccionesDeJuego()).elegirManoJugador2(obtenerEleccionAleatoria());
+            return turno.elegirManoJugador1(turnoEleccionMano.eleccionesDeJuego())
+                        .elegirManoJugador2(obtenerEleccionAleatoria());
 
 
         } else {
@@ -76,9 +80,9 @@ public class MovimeintoDeJuegoCasoDeUso implements CasoDeUsoBase<TurnoEleccionMa
             ) {
                 errorJugador(turnoEleccionMano.identificacionJugador());
             }
-            if(jugador1.identificacion().equals(turnoEleccionMano.identificacionJugador())) {
+            if (jugador1.identificacion().equals(turnoEleccionMano.identificacionJugador())) {
                 return turno.elegirManoJugador1(turnoEleccionMano.eleccionesDeJuego());
-            }else{
+            } else {
                 return turno.elegirManoJugador2(turnoEleccionMano.eleccionesDeJuego());
 
             }
@@ -90,23 +94,23 @@ public class MovimeintoDeJuegoCasoDeUso implements CasoDeUsoBase<TurnoEleccionMa
     }
 
     private void errorJugador(Integer identificacion) {
-        UsuarioError error = new UsuarioError("El jugador con identificacion "+identificacion+" no pertenece a ese juego ");
+        UsuarioError error = new UsuarioError(
+                "El jugador con identificacion " + identificacion + " no pertenece a ese juego ");
         error.log();
         throw error;
 
     }
 
-    private EleccionesDeJuego obtenerEleccionAleatoria(){
-        Random random = new Random();
-        return EleccionesDeJuego.values()[random.nextInt(EleccionesDeJuego.values().length)];
+    private EleccionesDeJuego obtenerEleccionAleatoria() {
+        return EleccionesDeJuego.values()[RANDOM.nextInt(EleccionesDeJuego.values().length)];
     }
 
-    private Juego validarCrearnuevoTurno(Juego juego, Turno turno){
-        if(null != juego.ganador()){
-           return juegoRepositorio.actualizarGanador(juego.ganador(), juego.numeroJuego());
+    private Juego validarCrearnuevoTurno(Juego juego, Turno turno) {
+        if (null != juego.ganador()) {
+            return juegoRepositorio.actualizarGanador(juego.ganador(), juego.numeroJuego());
         }
-        if(null != turno.ganador()){
-            juegoRepositorio.crearNuevoTurno(juego, turno.turnoNumero()+1);
+        if (null != turno.ganador()) {
+            juegoRepositorio.crearNuevoTurno(juego, turno.turnoNumero() + 1);
         }
         return juego;
     }

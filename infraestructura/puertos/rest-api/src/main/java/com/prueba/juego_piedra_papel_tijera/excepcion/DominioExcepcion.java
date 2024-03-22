@@ -14,7 +14,9 @@ public class DominioExcepcion extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ErrorDominio.class)
     public ResponseEntity<ErrorResponse> handleMiExcepcion(ErrorDominio error) {
 
-        return ResponseEntity.status(error.getCodigoError()).body(new ErrorResponse(error.getMensaje(),error.getCodigoError(),error.getTipoError()));
+        return ResponseEntity.status(error.getCodigoError())
+                             .body(new ErrorResponse(error.getMensaje(), error.getCodigoError(),
+                                                     error.getTipoError()));
 
     }
 

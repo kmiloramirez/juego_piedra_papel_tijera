@@ -22,8 +22,9 @@ public class UsuarioComando {
     }
 
     @PostMapping
-    public UsuarioDto crearUsuario(@RequestBody UsuarioCreacionRequest usuarioRequest){
-        UsuarioCrear usuario = UsuarioMapeadorRestApi.convertirCreacionRequestAModelo(usuarioRequest);
+    public UsuarioDto crearUsuario(@RequestBody UsuarioCreacionRequest usuarioRequest) {
+        UsuarioCrear usuario =
+                UsuarioMapeadorRestApi.convertirCreacionRequestAModelo(usuarioRequest);
         return UsuarioMapeadorRestApi.convertirADto(crearUsuarioCasoDeUso.ejecutar(usuario));
     }
 

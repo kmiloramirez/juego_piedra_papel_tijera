@@ -11,21 +11,20 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 
-
 @ExtendWith(MockitoExtension.class)
 class NombreUsuarioReglaTest {
 
     private NombreUsuarioRegla regla;
 
     @Before
-    public void configuracion(){
+    public void configuracion() {
         regla = new NombreUsuarioRegla();
     }
 
     @Test
     void validarNombreUsuarioNull() {
         UsuarioCrear usuario = new UsuarioBuilder().nombre(null).buildusuarioCrear();
-        Assertions.assertThrows(UsuarioError.class , ()->{
+        Assertions.assertThrows(UsuarioError.class, () -> {
             regla.validar(usuario);
         });
     }
@@ -33,7 +32,7 @@ class NombreUsuarioReglaTest {
     @Test
     void validarNombreUsuarioEsVacio() {
         UsuarioCrear usuario = new UsuarioBuilder().nombre("").buildusuarioCrear();
-        Assertions.assertThrows(UsuarioError.class ,()->{
+        Assertions.assertThrows(UsuarioError.class, () -> {
             regla.validar(usuario);
         });
 

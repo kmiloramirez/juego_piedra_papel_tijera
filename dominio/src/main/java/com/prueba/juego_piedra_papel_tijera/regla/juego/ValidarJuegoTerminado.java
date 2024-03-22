@@ -10,8 +10,10 @@ public class ValidarJuegoTerminado implements Regla<Juego> {
     @Override
     public void validar(Juego juego) {
         UsuarioError error;
-        if(null != juego.ganador()){
-            error = new UsuarioError("EL juego con el numero: "  + juego.numeroJuego() + " ya fue ganado por: "+ juego.ganador());
+        if (null != juego.ganador()) {
+            error = new UsuarioError(
+                    "EL juego con el numero: " + juego.numeroJuego() + " ya fue ganado por: "
+                            + juego.ganador());
             error.log();
             throw error;
         }

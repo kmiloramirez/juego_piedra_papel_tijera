@@ -1,9 +1,7 @@
 package com.prueba.juego_piedra_papel_tijera.mapeador;
 
 import com.prueba.juego_piedra_papel_tijera.dto.TurnoDto;
-import com.prueba.juego_piedra_papel_tijera.dto.UsuarioDto;
 import com.prueba.juego_piedra_papel_tijera.entidad.juego.Turno;
-import com.prueba.juego_piedra_papel_tijera.entidad.usuario.Usuario;
 import com.prueba.juego_piedra_papel_tijera.entidad.usuario.UsuarioCrear;
 import com.prueba.juego_piedra_papel_tijera.request.UsuarioCreacionRequest;
 

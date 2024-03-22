@@ -25,6 +25,7 @@ public class UsuarioBuilder {
     public Usuario build() {
         return new Usuario(nombre, identificacion);
     }
+
     public UsuarioCrear buildusuarioCrear() {
         return new UsuarioCrear(nombre);
     }

@@ -13,7 +13,7 @@ public class NombreUsuarioRegla implements Regla<UsuarioCrear> {
     public void validar(UsuarioCrear usuario) {
         UsuarioError error;
         String nombreUsuario = usuario.nombre();
-        if(null == nombreUsuario|| nombreUsuario.trim().isEmpty() ) {
+        if (null == nombreUsuario || nombreUsuario.trim().isEmpty()) {
             error = new UsuarioError("El usuario debe tener un nombre valido");
             error.log();
             throw error;

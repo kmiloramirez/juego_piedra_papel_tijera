@@ -9,28 +9,34 @@ public record Turno(
         Ganador ganador,
         Integer turnoNumero
 ) {
-    public Turno elegirManoJugador1(EleccionesDeJuego eleccion){
-        return new Turno(eleccion,this.manoJugador2(),this.ganador(),this.turnoNumero);
+    public Turno elegirManoJugador1(EleccionesDeJuego eleccion) {
+        return new Turno(eleccion, this.manoJugador2(), this.ganador(), this.turnoNumero);
     }
 
-    public Turno elegirManoJugador2(EleccionesDeJuego eleccion){
-        return new Turno(this.manoJugador1(),eleccion,this.ganador(),this.turnoNumero);
+    public Turno elegirManoJugador2(EleccionesDeJuego eleccion) {
+        return new Turno(this.manoJugador1(), eleccion, this.ganador(), this.turnoNumero);
     }
+
     public Turno validarGanador() {
         if (null == this.manoJugador1() || null == this.manoJugador2()) {
             return new Turno(this.manoJugador1(), this.manoJugador2(), this.ganador(),
                              this.turnoNumero);
-        }
-        else if  (this.manoJugador1() == this.manoJugador2()) {
-            return new Turno(this.manoJugador1(), this.manoJugador2(), Ganador.EMPATE, this.turnoNumero);
+        } else if (this.manoJugador1() == this.manoJugador2()) {
+            return new Turno(this.manoJugador1(), this.manoJugador2(), Ganador.EMPATE,
+                             this.turnoNumero);
         } else if (
-                (this.manoJugador1() == EleccionesDeJuego.PIEDRA && this.manoJugador2() == EleccionesDeJuego.TIJERA) ||
-                (this.manoJugador1() == EleccionesDeJuego.PAPEL && this.manoJugador2() == EleccionesDeJuego.PIEDRA) ||
-                (this.manoJugador1() == EleccionesDeJuego.TIJERA && this.manoJugador2() == EleccionesDeJuego.PAPEL)
+                (this.manoJugador1() == EleccionesDeJuego.PIEDRA
+                        && this.manoJugador2() == EleccionesDeJuego.TIJERA) ||
+                        (this.manoJugador1() == EleccionesDeJuego.PAPEL
+                                && this.manoJugador2() == EleccionesDeJuego.PIEDRA) ||
+                        (this.manoJugador1() == EleccionesDeJuego.TIJERA
+                                && this.manoJugador2() == EleccionesDeJuego.PAPEL)
         ) {
-            return new Turno(this.manoJugador1(), this.manoJugador2(), Ganador.JUGADOR_1, this.turnoNumero);
+            return new Turno(this.manoJugador1(), this.manoJugador2(), Ganador.JUGADOR_1,
+                             this.turnoNumero);
         } else {
-            return new Turno(this.manoJugador1(), this.manoJugador2(), Ganador.JUGADOR_2, this.turnoNumero);
+            return new Turno(this.manoJugador1(), this.manoJugador2(), Ganador.JUGADOR_2,
+                             this.turnoNumero);
         }
     }
 

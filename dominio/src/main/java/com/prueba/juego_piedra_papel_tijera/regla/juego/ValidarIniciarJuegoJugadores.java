@@ -27,7 +27,7 @@ public class ValidarIniciarJuegoJugadores implements Regla<JuegoIniciar> {
 
         }
         if (ModalidadJuego.DOS_JUGADORES == juego.modalidadJuego()) {
-            if(null == juego.identificacionJugador1()|| null == juego.identificacionJugador2()){
+            if (null == juego.identificacionJugador1() || null == juego.identificacionJugador2()) {
                 error = new UsuarioError(
                         "En esta modalidad de juego de dos parsonas debria estar los dos jugadores");
                 error.log();

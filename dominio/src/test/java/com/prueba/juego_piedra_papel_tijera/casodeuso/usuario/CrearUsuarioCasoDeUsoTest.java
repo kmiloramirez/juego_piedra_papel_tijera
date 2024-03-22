@@ -9,11 +9,11 @@ import com.prueba.juego_piedra_papel_tijera.regla.usuario.UsuarioExistenteRegla;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.junit.jupiter.api.Assertions;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -26,11 +26,12 @@ public class CrearUsuarioCasoDeUsoTest {
     private UsuarioExistenteRegla usuarioExistenteRegla;
 
     @Before
-    public void configuracion(){
+    public void configuracion() {
         usuarioRepositorio = Mockito.mock(UsuarioRepositorio.class);
         nombreUsuarioRegla = Mockito.mock(NombreUsuarioRegla.class);
         usuarioExistenteRegla = Mockito.mock(UsuarioExistenteRegla.class);
-        casoDeUso = new CrearUsuarioCasoDeUso(usuarioRepositorio,nombreUsuarioRegla,usuarioExistenteRegla);
+        casoDeUso = new CrearUsuarioCasoDeUso(usuarioRepositorio, nombreUsuarioRegla,
+                                              usuarioExistenteRegla);
     }
 
 
@@ -39,18 +40,19 @@ public class CrearUsuarioCasoDeUsoTest {
         UsuarioCrear usuario = new UsuarioBuilder().nombre("Juan").buildusuarioCrear();
         ArgumentCaptor<UsuarioCrear> usuarioCaptor = ArgumentCaptor.forClass(UsuarioCrear.class);
         Usuario usuarioMock = new UsuarioBuilder().nombre("Juan").identificacion(1).build();
-        Mockito.when(usuarioRepositorio.guardarUsuario(usuarioCaptor.capture())).thenReturn(usuarioMock);
+        Mockito.when(usuarioRepositorio.guardarUsuario(usuarioCaptor.capture()))
+               .thenReturn(usuarioMock);
         Mockito.doNothing().when(nombreUsuarioRegla).validar(usuario);
         Mockito.doNothing().when(usuarioExistenteRegla).validar(usuario);
 
         Usuario resultadp = casoDeUso.ejecutar(usuario);
-        Mockito.verify(usuarioRepositorio,Mockito.times(1)).guardarUsuario(usuario);
-        Mockito.verify(nombreUsuarioRegla,Mockito.times(1)).validar(usuario);
-        Mockito.verify(usuarioExistenteRegla,Mockito.times(1)).validar(usuario);
+        Mockito.verify(usuarioRepositorio, Mockito.times(1)).guardarUsuario(usuario);
+        Mockito.verify(nombreUsuarioRegla, Mockito.times(1)).validar(usuario);
+        Mockito.verify(usuarioExistenteRegla, Mockito.times(1)).validar(usuario);
 
         Assertions.assertFalse(usuarioCaptor.getAllValues().isEmpty());
-        Assertions.assertEquals(usuario.nombre(),usuarioCaptor.getValue().nombre());
-        Assertions.assertEquals(usuarioMock.identificacion(),resultadp.identificacion());
+        Assertions.assertEquals(usuario.nombre(), usuarioCaptor.getValue().nombre());
+        Assertions.assertEquals(usuarioMock.identificacion(), resultadp.identificacion());
 
 
     }
